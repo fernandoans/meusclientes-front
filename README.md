@@ -26,87 +26,30 @@ Para a parte do front-end (MeusClientesFront) foram utilizadas as seguintes tecn
 * Axios 1.7.7
 
 ## Compilar
-Este projeto utiliza o Node e NPM para o gerenciamento dos pacotes:
-`mvn clean install
+Este projeto utiliza o Node e NPM para o gerenciamento dos pacotes, para iniciar o projeto:
+`npm start
 
-Para ter o JAR executável do projeto, classes de teste unitário são executadas nesse processo, todas devem passar sem problemas indicando que o projeto está integro.
-```
-[INFO] Results:
-[INFO] 
-[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0
-```
+Uma vez ativado, o navegador será chamado e redirecionado para a porta 3000, tenha certeza que o back já está ativo e respondendo corretamente, e a seguinte tela será mostrada:
+![Tela Inicial](FigTelaInicial.png)
 
-Ativar o ambiente produtivo
-`$ java jar -Dspring.profiles.active=prod meucliente-0.1.jar
+Existem dois usuários:
+`Usuário: admin
+`Senha: 123qwe!@#
 
-Ativar o ambiente não produtivo
-`$ java jar -Dspring.profiles.active=dev meucliente-0.1.jar
+Que possui permissão de acesso total ao sistema, podendo Visualizar, Incluir, Alterar e Excluir Clientes. o outro usuário é:
+`Usuário: admin
+`Senha: 123qwe123
+
+Que pode apenas Visualizar os dados.
 
 ## Detalhes do Projeto
-O primeiro serviço que deve ser chamado é o de login:
+O primeiro serviço que deve ser chamado no momento do login é:
 `http://localhost:8080/meusclientes/login/
 
-Este retornará um TOKEN válido para acesso aos serviços do cliente, existem 2 usuários: padrão e admin, a senha deve ser passada com Base64. O usuário padrão só tem acesso a visualizar os dados enquanto que o admin pode manipulá-los.
+Este retornará um TOKEN válido que será guardado na seção para acesso aos serviços do cliente. Uma vez recebido e decodificado esse Token outras informações serão obtidas e entre elas o modo de acesso. Para o usuário "admin" a tela mostrada será:
 
-Corpo para o usuário admin:
-```
-{
-    "login": "admin",
-    "senha": "MTIzcXdlIUAj"
-}
-```
+![Tela Inicial](FigTelaAdmin.png)
 
-E para o usuário padrão:
-```
-{
-    "login": "padrão",
-    "senha": "MTIzcXdlMTIz"
-}
-```
+e para o usuário padrão:
 
-Os outros serviços do Cliente podem ser conhecidos acessando a documentaçã do Swagger. Ativar o BACK, e chamar o seguinte endereço:
-http://localhost:8080/meusclientes/swagger-ui/index.html#/
-
-![Tela Inicial](FigSwagger.png)
-
-## Modelagem do Banco
-Para o banco de dados foi utilizado o PostgreSQL, conforme o seguinte M&R (Modelo de Entidade e Relacionamento):
-
-![M&E - Modelo de Entidade e Relacionamento](FigMER.png)
-
-Conforme o seguinte Script de criação:
-
-```
-create schema meucliente;
-
-create table meucliente.cliente (
-  cpf char(11) not null, 
-  nome varchar(255), 
-  cep char(8),
-  logradouro varchar(120), 
-  bairro varchar(120), 
-  cidade varchar(120), 
-  uf char(2),
-  complemento varchar(255), 
-  primary key (cpf)
-);
-
-create table meucliente.email (
-  id SERIAL not null, 
-  descricao varchar(255),
-  cpf char(11) not null,
-  primary key (id),
-  foreign key (cpf) references meucliente.cliente(cpf)
-);
-
-create table meucliente.telefone (
-  id SERIAL not null, 
-  tipo char(1),
-  numero varchar(9),
-  cpf char(11) not null,
-  primary key (id),
-  foreign key (cpf) references meucliente.cliente(cpf)
-);
-```
-
-
+![Tela Inicial](FigTelaPadrao.png)
