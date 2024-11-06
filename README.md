@@ -30,15 +30,22 @@ Este projeto utiliza o Node e NPM para o gerenciamento dos pacotes, para iniciar
 `npm start
 
 Uma vez ativado, o navegador será chamado e redirecionado para a porta 3000, tenha certeza que o back já está ativo e respondendo corretamente, e a seguinte tela será mostrada:
+
 ![Tela Inicial](FigTelaInicial.png)
 
 Existem dois usuários:
-`Usuário: admin
-`Senha: 123qwe!@#
+
+```
+Usuário: admin
+Senha: 123qwe!@#
+```
 
 Que possui permissão de acesso total ao sistema, podendo Visualizar, Incluir, Alterar e Excluir Clientes. o outro usuário é:
-`Usuário: admin
-`Senha: 123qwe123
+
+```
+Usuário: padrão
+Senha: 123qwe123
+```
 
 Que pode apenas Visualizar os dados.
 
