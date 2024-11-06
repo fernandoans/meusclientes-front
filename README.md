@@ -1,12 +1,12 @@
-# Projeto Meus Clientes: Back-End
+# Projeto Meus Clientes: Front-End
 Este é um projeto que exemplifica como trabalhar com "React + Spring Boot". A arquitetura deste foi montada conforme o seguinte esquema:
 
 ![Tela Inicial](FigArquitetura.png)
 
-Ativar o Front acessar a aplicação em:
+Ativar o Back acessar a aplicação em:
 http://localhost:3000
 
-Mais Detalhes do Front: https://github.com/fernandoans/meusclientes-front
+Mais Detalhes do Back: https://github.com/fernandoans/meusclientes-back
 
 ## Ferramentas Utilizadas
 Para esta parte foram utilizadas as seguintes tecnologias:
@@ -26,7 +26,7 @@ Para a parte do front-end (MeusClientesFront) foram utilizadas as seguintes tecn
 * Axios 1.7.7
 
 ## Compilar
-Este projeto utiliza o Maven disponível no Spring Tool Suite 4 na versão 3.9.9, assim basta executar o processo:
+Este projeto utiliza o Node e NPM para o gerenciamento dos pacotes:
 `mvn clean install
 
 Para ter o JAR executável do projeto, classes de teste unitário são executadas nesse processo, todas devem passar sem problemas indicando que o projeto está integro.
